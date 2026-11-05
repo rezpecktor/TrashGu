@@ -15,8 +15,8 @@
             font-family: 'Poppins', sans-serif;
         }
         .sidebar-item.active {
-            background-color: #16A34A;
-            color: white;
+            background-color: rgba(255, 255, 255, 0.14);
+            color: #ffffff;
         }
         .sidebar-item.active i {
             color: white;
@@ -31,85 +31,96 @@
         ::-webkit-scrollbar-thumb:hover { background: #555; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="trashgu-ui bg-[#F6F5EF] text-[#202A25]">
     <div class="relative min-h-screen md:flex">
          <!-- Overlay untuk mobile -->
-        <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden md:hidden"></div>
+        <button id="sidebar-overlay" type="button" class="fixed inset-0 z-20 hidden bg-[#102B21]/70 md:hidden" aria-label="Tutup navigasi"></button>
          <!-- Sidebar Navigation -->
-        <aside id="dashboard-sidebar" class="bg-white w-72 text-gray-800 flex flex-col fixed inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 z-30 shadow-lg">
-            <div class="p-6 flex items-center gap-4 border-b border-gray-100">
-                <img src="./assets/images/logo.png" alt="TrashGu Logo" class="h-10" />
+        <aside id="dashboard-sidebar" class="fixed inset-y-0 left-0 z-30 flex w-72 -translate-x-full transform flex-col border-r border-[#315C4B] bg-[#244C3D] text-white md:relative md:translate-x-0" aria-label="Navigasi dashboard">
+            <div class="flex items-center gap-4 border-b border-white/15 p-6">
+                <a href="./index.html" class="inline-flex min-h-11 items-center rounded-md bg-white px-3 py-2"><img src="./assets/images/logo.png" alt="TrashGu" class="h-9" /></a>
             </div>
             <nav class="flex-grow p-4 space-y-2">
-                <a href="#" class="sidebar-item flex items-center py-3 px-4 rounded-lg font-semibold hover:bg-gray-100" data-page="page-dashboard">
+                <button type="button" class="sidebar-item flex min-h-12 w-full items-center rounded-lg px-4 py-3 text-left font-semibold text-white/90 hover:bg-white/10" data-page="page-dashboard">
                     <i class="fas fa-home fa-fw mr-3 w-5"></i><span>Dashboard</span>
-                </a>
-                <a href="./klasifikasi.html" class="sidebar-item flex items-center py-3 px-4 rounded-lg font-semibold hover:bg-gray-100">
+                </button>
+                <a href="./klasifikasi.html" class="sidebar-item flex min-h-12 items-center rounded-lg bg-[#DDE8DB] px-4 py-3 font-bold text-[#244C3D] hover:bg-white">
                     <i class="fas fa-plus-circle fa-fw mr-3 w-5"></i><span>Klasifikasi Baru</span>
                 </a>
-                <a href="#" class="sidebar-item flex items-center py-3 px-4 rounded-lg font-semibold hover:bg-gray-100" data-page="page-riwayat">
+                <button type="button" class="sidebar-item flex min-h-12 w-full items-center rounded-lg px-4 py-3 text-left font-semibold text-white/90 hover:bg-white/10" data-page="page-riwayat">
                     <i class="fas fa-history fa-fw mr-3 w-5"></i><span>Riwayat</span>
-                </a>
-                <a href="#" class="sidebar-item flex items-center py-3 px-4 rounded-lg font-semibold hover:bg-gray-100" data-page="page-statistik">
+                </button>
+                <button type="button" class="sidebar-item flex min-h-12 w-full items-center rounded-lg px-4 py-3 text-left font-semibold text-white/90 hover:bg-white/10" data-page="page-statistik">
                     <i class="fas fa-chart-pie fa-fw mr-3 w-5"></i><span>Statistik</span>
-                </a>
-                <a href="#" class="sidebar-item flex items-center py-3 px-4 rounded-lg font-semibold hover:bg-gray-100" data-page="page-pengaturan">
+                </button>
+                <button type="button" class="sidebar-item flex min-h-12 w-full items-center rounded-lg px-4 py-3 text-left font-semibold text-white/90 hover:bg-white/10" data-page="page-pengaturan">
                     <i class="fas fa-cog fa-fw mr-3 w-5"></i><span>Pengaturan</span>
-                </a>
+                </button>
             </nav>
             <div class="p-4">
-                <a href="#" id="logout-button" class="flex items-center py-3 px-4 rounded-lg font-semibold text-gray-500 hover:bg-red-50 hover:text-red-600 transition-colors duration-200">
+                <button type="button" id="logout-button" class="flex min-h-12 w-full items-center rounded-lg px-4 py-3 font-semibold text-white/80 hover:bg-white/10 hover:text-white">
                     <i class="fas fa-sign-out-alt fa-fw mr-3 w-5"></i><span>Logout</span>
-                </a>
+                </button>
             </div>
         </aside>
         
          <!-- Main Content Wrapper -->
         <div class="flex-1 flex flex-col max-h-screen overflow-hidden">
-             <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-10 p-4 flex items-center justify-between border-b">
-                <button id="sidebar-toggle-button" class="md:hidden text-gray-600 focus:outline-none"><i class="fas fa-bars fa-lg"></i></button>
+             <header class="sticky top-0 z-10 flex items-center justify-between border-b border-[#D7DED5] bg-[#F6F5EF]/95 p-4 backdrop-blur-sm">
+                <button id="sidebar-toggle-button" type="button" class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-[#244C3D] hover:bg-[#DDE8DB] md:hidden" aria-label="Buka navigasi" aria-controls="dashboard-sidebar" aria-expanded="false"><i class="fas fa-bars fa-lg" aria-hidden="true"></i></button>
                 <div class="flex items-center gap-4 ml-auto">
                     <span class="text-sm text-gray-700 hidden sm:block">Halo, <strong id="user-name-placeholder">User</strong>!</span>
                     <div class="relative">
-                        <button id="user-menu-button" class="focus:outline-none"><img class="h-9 w-9 rounded-full object-cover" src="https://placehold.co/40x40" alt="User avatar" id="navbar-user-avatar"></button>
-                        <div id="user-menu-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-xl z-20 py-1">
-                            <a href="#" data-page="page-pengaturan" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profil</a>
-                            <a href="#" id="logout-button-dropdown" class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50">Logout</a>
+                        <button id="user-menu-button" type="button" class="inline-flex h-11 w-11 items-center justify-center rounded-full" aria-label="Buka menu pengguna" aria-expanded="false" aria-controls="user-menu-dropdown"><img class="h-9 w-9 rounded-full object-cover" src="https://placehold.co/40x40" alt="Avatar pengguna" id="navbar-user-avatar"></button>
+                        <div id="user-menu-dropdown" class="trashgu-panel absolute right-0 z-20 mt-2 hidden w-48 rounded-lg p-1 shadow-lg">
+                            <button type="button" data-page="page-pengaturan" class="block min-h-11 w-full rounded-md px-4 py-2 text-left text-sm text-[#202A25] hover:bg-[#DDE8DB]">Profil</button>
+                            <button type="button" id="logout-button-dropdown" class="block min-h-11 w-full rounded-md px-4 py-2 text-left text-sm font-semibold text-[#8B2923] hover:bg-[#FFF3F1]">Keluar</button>
                         </div>
                     </div>
                 </div>
             </header>
             
-            <main class="flex-1 p-4 sm:p-6 lg:p-8 overflow-y-auto">
+            <main class="flex-1 overflow-y-auto bg-[#F6F5EF] p-4 sm:p-6 lg:p-8" id="dashboard-main" tabindex="-1">
                  <!-- Halaman Dashboard -->
                 <div id="page-dashboard" class="page-content">
-                     <h1 class="text-3xl font-bold text-gray-800 mb-2" id="dashboard-greeting">Halo, User!</h1>
-                    <p class="text-gray-500 mb-8">Ringkasan Statistik Anda</p>
+                    <div class="mb-8 flex flex-col gap-5 border-b border-[#D7DED5] pb-8 sm:flex-row sm:items-end sm:justify-between">
+                      <div>
+                        <p class="mb-2 text-sm font-semibold text-[#244C3D]">Ruang kerja Anda</p>
+                        <h1 class="text-3xl font-bold text-[#202A25] sm:text-4xl" id="dashboard-greeting">Halo, User!</h1>
+                        <p class="mt-3 max-w-xl text-[#526159]">Mulai klasifikasi baru atau tinjau kembali hasil pemilahan sebelumnya.</p>
+                      </div>
+                      <a href="./klasifikasi.html" class="inline-flex min-h-12 items-center justify-center rounded-lg bg-[#244C3D] px-6 py-3 font-bold text-white hover:bg-[#18392D]"><i class="fas fa-plus-circle mr-3" aria-hidden="true"></i>Klasifikasi baru</a>
+                    </div>
+                    <div id="dashboard-load-error" class="mb-6 hidden rounded-lg border border-[#D7A9A3] bg-[#FFF3F1] p-4 text-sm text-[#8B2923]" role="alert">
+                      <p class="font-semibold">Data dashboard belum dapat dimuat.</p>
+                      <p class="mt-1">Periksa koneksi backend lalu coba lagi.</p>
+                      <button type="button" id="retry-dashboard-load" class="mt-3 min-h-11 rounded-lg border border-[#8B2923] px-4 py-2 font-semibold hover:bg-white">Coba lagi</button>
+                    </div>
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         <div class="lg:col-span-2 space-y-8">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
-                                <div class="bg-white p-5 rounded-xl shadow-sm flex items-center border border-gray-200">
-                                    <div class="bg-blue-100 text-blue-500 p-3 rounded-lg"><i class="fas fa-box-open fa-lg"></i></div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="trashgu-muted-panel flex items-center rounded-xl p-5 sm:col-span-2">
+                                    <div class="rounded-lg bg-[#244C3D] p-3 text-white"><i class="fas fa-box-open fa-lg" aria-hidden="true"></i></div>
                                     <div class="ml-4">
-                                        <h3 class="text-gray-500 text-sm">Total Klasifikasi</h3>
-                                        <p id="stats-total" class="text-2xl font-bold">0</p>
+                                        <h2 class="text-sm font-semibold text-[#405047]">Total klasifikasi</h2>
+                                        <p id="stats-total" class="text-3xl font-bold text-[#202A25]">0</p>
                                     </div>
                                 </div>
-                                <div class="bg-white p-5 rounded-xl shadow-sm flex items-center border border-gray-200">
+                                <div class="trashgu-panel flex items-center rounded-xl p-5">
                                     <div class="bg-green-100 text-green-500 p-3 rounded-lg"><i class="fas fa-leaf fa-lg"></i></div>
                                     <div class="ml-4">
                                         <h3 class="text-gray-500 text-sm">Sampah Organik</h3>
                                         <p id="stats-organik" class="text-2xl font-bold">0</p>
                                     </div>
                                 </div>
-                                <div class="bg-white p-5 rounded-xl shadow-sm flex items-center border border-gray-200">
+                                <div class="trashgu-panel flex items-center rounded-xl p-5">
                                     <div class="bg-yellow-100 text-yellow-500 p-3 rounded-lg"><i class="fas fa-recycle fa-lg"></i></div>
                                     <div class="ml-4">
                                         <h3 class="text-gray-500 text-sm">Sampah Anorganik</h3>
                                         <p id="stats-anorganik" class="text-2xl font-bold">0</p>
                                     </div>
                                 </div>
-                                <div class="bg-white p-5 rounded-xl shadow-sm flex items-center border border-gray-200">
+                                <div class="trashgu-panel flex items-center rounded-xl p-5 sm:col-span-2">
                                     <div class="bg-red-100 text-red-500 p-3 rounded-lg"><i class="fas fa-trash-alt fa-lg"></i></div>
                                     <div class="ml-4">
                                         <h3 class="text-gray-500 text-sm">Sampah Residu</h3>
@@ -117,18 +128,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                            <div class="trashgu-panel rounded-xl p-6">
                                 <h3 class="text-xl font-semibold mb-4 text-gray-800">Distribusi Kategori Sampah</h3>
-                                <div class="h-80 md:h-96"><canvas id="pie-chart-dashboard"></canvas></div>
+                                <div class="h-80 md:h-96"><canvas id="pie-chart-dashboard" role="img" aria-label="Distribusi klasifikasi organik, anorganik, dan residu"></canvas></div>
                             </div>
                         </div>
                         <div class="lg:col-span-1">
-                            <div class="bg-white p-6 rounded-xl shadow-sm h-full border border-gray-200 flex flex-col">
+                            <div class="trashgu-panel flex h-full flex-col rounded-xl p-6">
                                 <h3 class="text-xl font-semibold mb-4 text-gray-800">Aktivitas Terbaru</h3>
                                 <div id="recent-activity-list" class="space-y-2 flex-grow">
                                     <p id="loading-history" class="text-gray-500 text-center p-4">Memuat riwayat...</p>
                                 </div>
-                                <a href="#" data-page="page-riwayat" id="view-all-activities" class="w-full block text-center mt-6 text-sm text-green-600 font-semibold py-2 rounded-lg hover:underline transition-colors">Lihat Semua Aktivitas</a>
+                                <button type="button" data-page="page-riwayat" id="view-all-activities" class="mt-6 min-h-11 w-full rounded-lg border border-[#AAB7AC] py-2 text-center text-sm font-semibold text-[#244C3D] hover:bg-[#DDE8DB]">Lihat semua aktivitas</button>
                             </div>
                         </div>
                     </div>
@@ -136,7 +147,7 @@
                  <!-- Halaman Riwayat -->
                 <div id="page-riwayat" class="page-content hidden">
                     <h2 class="text-2xl font-bold text-gray-800 mb-6">Semua Riwayat Klasifikasi</h2>
-                    <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+                    <div class="trashgu-panel rounded-xl">
                         <div id="loading-all-history" class="text-gray-500 py-8 text-center">Memuat riwayat...</div>
                         <div id="all-history-items-container" class="divide-y divide-gray-100"></div>
                     </div>
@@ -146,9 +157,9 @@
                     <h2 class="text-2xl font-bold text-gray-800 mb-6">Statistik Klasifikasi</h2>
                     <h3 class="text-xl font-semibold text-gray-700 mb-4">Ringkasan Total</h3>
                      <div id="statistics-summary-clone" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-8"></div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="trashgu-panel rounded-xl p-6">
                         <h3 class="text-xl font-semibold mb-4">Distribusi Kategori Sampah</h3>
-                        <div class="h-96 w-full"><canvas id="pie-chart-statistik"></canvas></div>
+                        <div class="h-96 w-full"><canvas id="pie-chart-statistik" role="img" aria-label="Distribusi klasifikasi organik, anorganik, dan residu"></canvas></div>
                     </div>
                 </div>
                  <!-- Halaman Pengaturan -->
@@ -156,16 +167,16 @@
                     <h2 class="text-2xl font-bold text-gray-800 mb-6">Pengaturan Akun</h2>
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         <div class="lg:col-span-1">
-                            <div class="bg-white p-6 rounded-xl shadow-sm border">
+                            <div class="trashgu-panel rounded-xl p-6">
                                 <h3 class="text-lg font-semibold text-center border-b pb-3 mb-4">Profil Pengguna</h3>
                                 <div class="relative w-32 h-32 mx-auto mb-4">
                                     <img id="profile-avatar" src="https://placehold.co/128x128" alt="Foto Profil" class="w-32 h-32 rounded-full object-cover border-4 border-gray-200">
-                                    <label for="avatar-upload" class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-white text-xs rounded-full opacity-0 hover:opacity-100 cursor-pointer transition-opacity">
+                                    <button type="button" id="avatar-upload-trigger" class="absolute inset-0 flex items-center justify-center rounded-full bg-black bg-opacity-60 text-xs font-semibold text-white opacity-0 transition-opacity hover:opacity-100 focus:opacity-100">
                                         Ganti Foto
-                                    </label>
-                                    <input type="file" id="avatar-upload" class="hidden" accept="image/*">
+                                    </button>
+                                    <input type="file" id="avatar-upload" class="sr-only" accept="image/*">
                                 </div>
-                                <div id="avatar-upload-message" class="text-xs text-center mb-4"></div>
+                                <div id="avatar-upload-message" class="text-sm text-center mb-4" role="status" aria-live="polite"></div>
                                 <div class="space-y-4 text-center">
                                     <div>
                                         <label class="text-sm font-medium text-gray-500">Nama Pengguna</label>
@@ -179,25 +190,25 @@
                             </div>
                         </div>
                         <div class="lg:col-span-2">
-                            <div class="bg-white p-6 rounded-xl shadow-sm border">
+                            <div class="trashgu-panel rounded-xl p-6">
                                 <h3 class="text-lg font-semibold border-b pb-3 mb-4">Ubah Kata Sandi</h3>
                                  <!-- PERBAIKAN FORM KATA SANDI -->
                                 <form id="changePasswordForm" class="space-y-4">
                                     <div>
                                         <label for="old-password" class="block text-sm font-medium text-gray-700">Kata Sandi Lama</label>
-                                        <input type="password" id="old-password" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500">
+                                        <input type="password" id="old-password" required autocomplete="current-password" class="mt-2 block min-h-12 w-full rounded-lg border border-[#AAB7AC] bg-white px-3 py-2 text-base">
                                     </div>
                                      <div>
                                         <label for="new-password" class="block text-sm font-medium text-gray-700">Kata Sandi Baru</label>
-                                        <input type="password" id="new-password" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500">
+                                        <input type="password" id="new-password" required autocomplete="new-password" class="mt-2 block min-h-12 w-full rounded-lg border border-[#AAB7AC] bg-white px-3 py-2 text-base">
                                     </div>
                                      <div>
                                         <label for="confirm-password" class="block text-sm font-medium text-gray-700">Konfirmasi Kata Sandi</label>
-                                        <input type="password" id="confirm-password" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500">
+                                        <input type="password" id="confirm-password" required autocomplete="new-password" class="mt-2 block min-h-12 w-full rounded-lg border border-[#AAB7AC] bg-white px-3 py-2 text-base">
                                     </div>
-                                    <div id="password-change-message" class="text-sm"></div>
+                                    <div id="password-change-message" class="min-h-6 text-sm" role="status" aria-live="polite"></div>
                                     <div class="text-right">
-                                        <button type="submit" id="submit-password-change" class="py-2 px-4 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700">Simpan</button>
+                                        <button type="submit" id="submit-password-change" class="min-h-12 rounded-lg bg-[#244C3D] px-5 py-3 font-semibold text-white hover:bg-[#18392D]">Simpan perubahan</button>
                                     </div>
                                 </form>
                             </div>
@@ -209,25 +220,25 @@
     </div>
     
      <!-- Modal Konfirmasi Hapus -->
-    <div id="delete-confirmation-modal" class="modal-overlay fixed inset-0 bg-black/60 hidden flex items-center justify-center p-4 z-50 opacity-0">
-        <div class="modal-content bg-white rounded-lg shadow-xl p-6 w-full max-w-md transform scale-95 text-center">
-            <h3 class="text-lg font-bold text-gray-900">Hapus Riwayat?</h3>
+    <div id="delete-confirmation-modal" class="modal-overlay fixed inset-0 bg-black/60 hidden flex items-center justify-center p-4 z-50 opacity-0" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
+        <div class="modal-content bg-white rounded-lg shadow-xl p-6 w-full max-w-md transform scale-95 text-center" tabindex="-1">
+            <h2 id="delete-modal-title" class="text-lg font-bold text-gray-900">Hapus riwayat?</h2>
             <p class="text-sm text-gray-500 my-4">Tindakan ini tidak dapat dibatalkan. Apakah Anda yakin ingin melanjutkan?</p>
             <div class="flex justify-center gap-4">
-                <button id="modal-cancel-delete" class="px-4 py-2 rounded-md text-sm font-medium bg-gray-200 hover:bg-gray-300">Batal</button>
-                <button id="modal-confirm-delete" class="px-4 py-2 rounded-md text-sm font-medium text-white bg-red-600 hover:bg-red-700">Ya, Hapus</button>
+                <button type="button" id="modal-cancel-delete" class="min-h-11 px-4 py-2 rounded-md text-sm font-medium bg-gray-200 hover:bg-gray-300">Batal</button>
+                <button type="button" id="modal-confirm-delete" class="min-h-11 px-4 py-2 rounded-md text-sm font-medium text-white bg-red-700 hover:bg-red-800">Ya, hapus</button>
             </div>
         </div>
     </div>
      <!-- Modal Lihat Detail -->
-    <div id="view-detail-modal" class="modal-overlay fixed inset-0 bg-black/60 hidden flex items-center justify-center p-4 z-50 opacity-0">
+    <div id="view-detail-modal" class="modal-overlay fixed inset-0 bg-black/60 hidden flex items-center justify-center p-4 z-50 opacity-0" role="dialog" aria-modal="true" aria-label="Detail hasil klasifikasi">
         <div id="detail-content-wrapper" class="modal-content bg-green-700 text-white rounded-lg shadow-xl w-full max-w-2xl transform scale-95 flex flex-col md:flex-row overflow-hidden">
              <!-- Konten detail dimuat oleh JS -->
         </div>
     </div>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const API_BASE_URL = 'https://pebria.pythonanywhere.com'; // Ubah ini agar tidak ada /api di akhir, karena akan ditambahkan di setiap fetch
+        const API_BASE_URL = 'http://127.0.0.1:5000'; // Ubah ini agar tidak ada /api di akhir, karena akan ditambahkan di setiap fetch
         const sidebar = document.getElementById('dashboard-sidebar');
         const sidebarToggle = document.getElementById('sidebar-toggle-button');
         const sidebarOverlay = document.getElementById('sidebar-overlay');
@@ -235,8 +246,11 @@
         const contentPages = document.querySelectorAll('.page-content');
         const userMenuButton = document.getElementById('user-menu-button');
         const userMenuDropdown = document.getElementById('user-menu-dropdown');
+        const dashboardLoadError = document.getElementById('dashboard-load-error');
+        const retryDashboardLoad = document.getElementById('retry-dashboard-load');
         window.charts = {};
         let allHistories = [];
+        let previouslyFocusedElement = null;
          // --- Navigasi & UI ---
         function switchPage( pageId ) {
             contentPages.forEach( page  =>  page .classList.add('hidden'));
@@ -267,19 +281,27 @@
         const toggleSidebar = () => {
             sidebar.classList.toggle('-translate-x-full');
             sidebarOverlay.classList.toggle('hidden');
+            const isOpen = !sidebar.classList.contains('-translate-x-full');
+            sidebarToggle.setAttribute('aria-expanded', String(isOpen));
+            sidebarToggle.setAttribute('aria-label', isOpen ? 'Tutup navigasi' : 'Buka navigasi');
         };
         sidebarToggle.addEventListener('click', toggleSidebar);
         sidebarOverlay.addEventListener('click', toggleSidebar);
         if (userMenuButton) {
-            userMenuButton.addEventListener('click', () => userMenuDropdown.classList.toggle('hidden'));
+            userMenuButton.addEventListener('click', () => {
+                userMenuDropdown.classList.toggle('hidden');
+                userMenuButton.setAttribute('aria-expanded', String(!userMenuDropdown.classList.contains('hidden')));
+            });
             document.addEventListener('click', ( e ) => {
                 if (!userMenuButton.contains( e .target) && !userMenuDropdown.contains( e .target)) {
                     userMenuDropdown.classList.add('hidden');
+                    userMenuButton.setAttribute('aria-expanded', 'false');
                 }
             });
-            userMenuDropdown.querySelector('a[data-page]')?.addEventListener('click', ( e ) => {
+            userMenuDropdown.querySelector('[data-page]')?.addEventListener('click', ( e ) => {
                  e .preventDefault();
                 userMenuDropdown.classList.add('hidden');
+                userMenuButton.setAttribute('aria-expanded', 'false');
                 switchPage( e .target.dataset.page);
             });
         }
@@ -295,6 +317,7 @@
             const authToken = localStorage.getItem('authToken');
             if (!authToken) { handleLogout(new Event('click')); return; }
             try {
+                dashboardLoadError?.classList.add('hidden');
                 const [statsRes, historyRes] = await Promise.all([
                     fetch(`${API_BASE_URL}/api/statistics`, { headers: { 'Authorization': `Bearer ${authToken}` }}),
                     fetch(`${API_BASE_URL}/api/history`, { headers: { 'Authorization': `Bearer ${authToken}` }})
@@ -308,8 +331,12 @@
                 updateUI(statsData, allHistories);
             } catch (error) {
                 console.error("Error fetching data:", error);
+                dashboardLoadError?.classList.remove('hidden');
+                document.getElementById('loading-history')?.classList.add('hidden');
+                document.getElementById('loading-all-history')?.classList.add('hidden');
             }
         }
+        retryDashboardLoad?.addEventListener('click', fetchData);
          // --- Update UI ---
         function updateUI( statsData ,  histories ) {
             updateUserUI();
@@ -331,18 +358,21 @@
                 document.getElementById('profile-email').textContent = currentUser.email || '-';
                 const savedAvatar = localStorage.getItem('userAvatar');
                 // Menggunakan API_BASE_URL untuk gambar avatar jika URL-nya relatif
-                const avatarSrc = savedAvatar && savedAvatar.startsWith('https://') ? savedAvatar : API_BASE_URL + savedAvatar; // Perbaikan: Cek jika sudah absolute URL
-                document.getElementById('navbar-user-avatar').src = avatarSrc; 
-                document.getElementById('profile-avatar').src = avatarSrc;
+                if (savedAvatar) {
+                    const avatarSrc = /^https?:\/\//.test(savedAvatar) ? savedAvatar : API_BASE_URL + savedAvatar;
+                    document.getElementById('navbar-user-avatar').src = avatarSrc;
+                    document.getElementById('profile-avatar').src = avatarSrc;
+                }
             } catch(e) { console.error("Could not parse user data from localStorage", e); }
         }
          // --- Update Stats UI ---
         function updateStatsUI( data ) {
-             if ( data  &&  data .total_classifications > 0) {
-                document.getElementById('stats-total').textContent =  data .total_classifications;
-                document.getElementById('stats-organik').textContent =  data .category_counts.ORGANIK || 0;
-                document.getElementById('stats-anorganik').textContent =  data .category_counts.ANORGANIK || 0;
-                document.getElementById('stats-residu').textContent =  data .category_counts.RESIDU || 0;
+             if (data) {
+                const categoryCounts = data.category_counts || {};
+                document.getElementById('stats-total').textContent = data.total_classifications || 0;
+                document.getElementById('stats-organik').textContent = categoryCounts.ORGANIK || 0;
+                document.getElementById('stats-anorganik').textContent = categoryCounts.ANORGANIK || 0;
+                document.getElementById('stats-residu').textContent = categoryCounts.RESIDU || 0;
                 const statsCloneContainer = document.getElementById('statistics-summary-clone');
                 const originalCards = document.querySelectorAll('#page-dashboard .grid.grid-cols-1.sm\\:grid-cols-2 > div');
                 if (statsCloneContainer) {
@@ -360,7 +390,7 @@
             if (!container) return;
             container.innerHTML = '';
             if (! histories  ||  histories .length === 0) {
-                container.innerHTML = '<p class="text-gray-500 p-4 text-center">Belum ada aktivitas.</p>';
+                container.innerHTML = '<div class="rounded-lg bg-[#F6F5EF] p-4 text-center"><p class="font-semibold text-[#202A25]">Belum ada aktivitas.</p><p class="mt-1 text-sm text-[#526159]">Mulai klasifikasi untuk melihat ringkasan terbaru di sini.</p><a class="mt-3 inline-flex min-h-11 items-center font-semibold text-[#244C3D] underline underline-offset-4" href="./klasifikasi.html">Klasifikasi gambar</a></div>';
                 return;
             }
              histories .slice(0, 3).forEach( item  => {
@@ -391,7 +421,7 @@
             if(!container || !loader) return;
             container.innerHTML = '';
             if (! histories  ||  histories .length === 0) {
-                container.innerHTML = '<p class="text-gray-500 text-center py-8">Belum ada riwayat klasifikasi.</p>';
+                container.innerHTML = '<div class="px-4 py-10 text-center"><p class="font-semibold text-[#202A25]">Riwayat masih kosong.</p><p class="mt-1 text-sm text-[#526159]">Hasil pengguna yang masuk akan tersimpan setelah klasifikasi berhasil.</p><a class="mt-3 inline-flex min-h-11 items-center font-semibold text-[#244C3D] underline underline-offset-4" href="./klasifikasi.html">Buat klasifikasi pertama</a></div>';
                 loader.classList.add('hidden');
                 return;
             }
@@ -405,14 +435,14 @@
                         <img src="${ item .image_url ? API_BASE_URL +  item .image_url : 'https://placehold.co/48x48'}" alt="${ item .filename}" class="w-12 h-12 rounded-lg object-cover flex-shrink-0">
                         <div class="flex-1 min-w-0">
                             <p class="font-semibold text-gray-800 truncate" title="${ item .filename || 'Gambar'}">${ item .filename || 'Gambar'}</p>
-                            <p class="text-xs text-gray-400 mt-1">${new Date( item .timestamp).toLocaleString('id-ID', { dateStyle: 'long', timeStyle: 'short' })}</p>
+                            <p class="mt-1 text-xs text-[#526159]">${new Date( item .timestamp).toLocaleString('id-ID', { dateStyle: 'long', timeStyle: 'short' })}</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-4 w-full sm:w-auto justify-end">
                         <span class="font-bold text-sm py-1 px-3 rounded-full ${badgeColor}">${accuracy}%</span>
                         <span class="font-semibold text-sm w-24 text-center">${ item .classification_result}</span>
-                        <button title="Lihat Detail" class="view-button text-gray-400 hover:text-blue-500" data-history-id="${ item .id}"><i class="fas fa-eye fa-lg"></i></button>
-                        <button title="Hapus" class="delete-button text-gray-400 hover:text-red-500" data-history-id="${ item .id}"><i class="fas fa-trash-alt fa-lg"></i></button>
+                        <button type="button" aria-label="Lihat detail ${ item .filename || 'gambar'}" class="view-button inline-flex h-11 w-11 items-center justify-center rounded-lg text-[#526159] hover:bg-[#DDE8DB] hover:text-[#244C3D]" data-history-id="${ item .id}"><i class="fas fa-eye fa-lg" aria-hidden="true"></i></button>
+                        <button type="button" aria-label="Hapus riwayat ${ item .filename || 'gambar'}" class="delete-button inline-flex h-11 w-11 items-center justify-center rounded-lg text-[#8B2923] hover:bg-[#FFF3F1]" data-history-id="${ item .id}"><i class="fas fa-trash-alt fa-lg" aria-hidden="true"></i></button>
                     </div>`;
                 container.appendChild(itemEl);
             });
@@ -423,16 +453,21 @@
         const viewModal = document.getElementById('view-detail-modal');
         let historyIdToAction = null;
         function openModal( modal ) {
+            previouslyFocusedElement = document.activeElement;
              modal .classList.remove('hidden');
             setTimeout(() => {
                  modal .classList.remove('opacity-0');
                  modal .querySelector('.modal-content').classList.remove('scale-95');
+                 modal.querySelector('button')?.focus();
             }, 10);
         }
         function closeModal( modal ) {
              modal .querySelector('.modal-content').classList.add('scale-95');
              modal .classList.add('opacity-0');
-            setTimeout(() =>  modal .classList.add('hidden'), 300);
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                previouslyFocusedElement?.focus();
+            }, 300);
         }
         
         function openViewModal( historyId ) {
@@ -442,7 +477,7 @@
             const detailWrapper = document.getElementById('detail-content-wrapper');
             detailWrapper.innerHTML = `
                 <div class="w-full md:w-1/2 flex-shrink-0 bg-gray-200">
-                    <img src="${item.image_url ? API_BASE_URL + item.image_url : 'https://placehold.co/400x400'}" class="w-full h-full object-contain">
+                    <img src="${item.image_url ? API_BASE_URL + item.image_url : 'https://placehold.co/400x400'}" alt="${item.filename || 'Gambar hasil klasifikasi'}" class="w-full h-full object-contain">
                 </div>
                 <div class="p-6 flex flex-col">
                     <span class="text-xs font-bold uppercase tracking-wider bg-white/20 text-white py-1 px-2 rounded-full self-start">${item.classification_result || 'N/A'}</span>
@@ -466,6 +501,27 @@
             openModal(viewModal);
         }
         document.getElementById('modal-cancel-delete').addEventListener('click', () => closeModal(deleteModal));
+        document.addEventListener('keydown', (event) => {
+            const activeModal = !deleteModal.classList.contains('hidden') ? deleteModal : !viewModal.classList.contains('hidden') ? viewModal : null;
+            if (!activeModal) return;
+            if (event.key === 'Escape') {
+                closeModal(activeModal);
+                return;
+            }
+            if (event.key === 'Tab') {
+                const focusable = [...activeModal.querySelectorAll('button:not([disabled]), a[href], input:not([disabled])')];
+                if (!focusable.length) return;
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (event.shiftKey && document.activeElement === first) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (!event.shiftKey && document.activeElement === last) {
+                    event.preventDefault();
+                    first.focus();
+                }
+            }
+        });
         
         async function handleDelete() {
             if (!historyIdToAction) return;
@@ -499,7 +555,9 @@
         }
          // --- UNGGAH FOTO & GANTI PASSWORD ---
         const avatarUploadInput = document.getElementById('avatar-upload');
+        const avatarUploadTrigger = document.getElementById('avatar-upload-trigger');
         const avatarUploadMessage = document.getElementById('avatar-upload-message');
+        avatarUploadTrigger?.addEventListener('click', () => avatarUploadInput.click());
         avatarUploadInput.addEventListener('change', async ( event ) => {
             const file =  event .target.files[0];
             if (!file) return;

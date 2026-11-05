@@ -6,20 +6,16 @@
     <title>TrashGu - Hasil Klasifikasi</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        .progress-bar-container { background-color: #e5e7eb; border-radius: 9999px; overflow: hidden; }
+        .progress-bar-container { background-color: #d7ded5; border-radius: 9999px; overflow: hidden; }
         .progress-bar { height: 100%; border-radius: 9999px; transition: width 0.5s ease-in-out; }
         
         /* --- PERUBAHAN CSS: Menghapus warna dinamis progress bar --- */
-        .progress-bar-green { background-color: #22c55e; }
+        .progress-bar-green { background-color: #244c3d; }
 
-        .category-badge-organik { background-color: #ffedd5; color: #9a3412; }
-        .category-badge-anorganik { background-color: #dcfce7; color: #166534; }
-        .category-badge-residu { background-color: #e2e8f0; color: #475569; }
+        .category-badge-organik { background-color: #dde8db; color: #244c3d; }
+        .category-badge-anorganik { background-color: #dbeafe; color: #1e3a8a; }
+        .category-badge-residu { background-color: #e7e5e4; color: #44403c; }
 
-        /* --- PERUBAHAN CSS: Menambahkan gradasi hijau permanen --- */
-        .gradient-card-green {
-            background-image: linear-gradient(to bottom, #3F7D58, #326748);
-        }
               html, body {
   height: 100%;
   margin: 0;
@@ -39,59 +35,62 @@ main {
       }
     </style>
 </head>
-<body class="font-sans text-gray-700 bg-[#F5F7FA]">
-    <header class="bg-footer-bg shadow-md sticky top-0 z-40">
+<body class="trashgu-ui font-sans text-[#202A25] bg-[#F6F5EF]">
+    <header class="sticky top-0 z-40 border-b border-[#D7DED5] bg-[#F6F5EF]/95 backdrop-blur-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
           <!-- Logo -->
           <div class="flex items-center gap-2">
-            <a href="./index.html">
-              <img src="./assets/images/logo.png" alt="TrashGu Logo" class="h-9" />
+            <a href="./index.html" class="inline-flex min-h-11 items-center rounded-md">
+              <img src="./assets/images/logo.png" alt="TrashGu" width="160" height="53" class="h-9 w-auto" />
             </a>
           </div>
           
           <!-- Menu Pengguna (Login/Daftar atau Dropdown Profil) -->
           <div class="flex items-center">
               <div id="nav-auth-guest-hasil" class="flex items-center gap-3 text-sm">
-                <a href="./registrasi.html" class="text-gray-600 hover:text-custom-green font-medium text-xs sm:text-sm">Daftar</a>
-                <a href="./login.html" class="bg-custom-green text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-md font-medium hover:bg-custom-green-darker transition-colors text-xs sm:text-sm">Masuk</a>
+                <a href="./registrasi.html" class="inline-flex min-h-11 items-center px-2 font-semibold text-[#244C3D] underline underline-offset-4">Daftar</a>
+                <a href="./login.html" class="inline-flex min-h-11 items-center rounded-lg bg-[#244C3D] px-4 font-semibold text-white hover:bg-[#18392D]">Masuk</a>
               </div>
               <div id="nav-auth-user-hasil" class="hidden relative">
-                  <button id="user-profile-button-hasil" type="button" class="flex items-center text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-custom-green">
+                  <button id="user-profile-button-hasil" type="button" class="flex min-h-11 items-center rounded-lg px-2 text-sm hover:bg-[#DDE8DB]" aria-expanded="false" aria-controls="user-profile-dropdown-hasil">
                       <span class="sr-only">Buka menu pengguna</span>
-                      <img class="h-8 w-8 rounded-full object-cover" src="https://placehold.co/40x40/A0AEC0/FFFFFF?text=U" alt="User Avatar" id="navbar-user-avatar-hasil">
+                      <img class="h-8 w-8 rounded-full object-cover" src="https://placehold.co/40x40/A0AEC0/FFFFFF?text=U" alt="Avatar pengguna" width="40" height="40" id="navbar-user-avatar-hasil">
                       <span id="navbar-user-name-short-hasil" class="hidden sm:inline-block ml-2 text-gray-700 font-medium">User</span>
                       <svg class="hidden sm:inline-block ml-1 h-4 w-4 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                           <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                       </svg>
                   </button>
-                  <div id="user-profile-dropdown-hasil" class="profile-dropdown hidden origin-top-right w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none py-1">
+                  <div id="user-profile-dropdown-hasil" class="profile-dropdown trashgu-panel hidden w-52 rounded-lg p-1 shadow-lg">
                       <a href="./dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-100 hover:text-custom-green">Dashboard</a>
                       <a href="./klasifikasi.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-100 hover:text-custom-green">Klasifikasi Baru</a>
-                      <button id="navbar-logout-button-hasil" class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 hover:text-red-700">Logout</button>
+                      <button id="navbar-logout-button-hasil" type="button" class="block min-h-11 w-full rounded-md px-4 py-2 text-left text-sm font-semibold text-[#8B2923] hover:bg-[#FFF3F1]">Keluar</button>
                   </div>
               </div>
           </div>
+        </div>
     </header>
 
 
-    <main class="py-12 sm:py-16">
-        <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8 sm:mb-10">
-                <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">Hasil Analisis Sampah</h1>
+    <main class="py-10 sm:py-14 lg:py-16">
+        <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" aria-labelledby="result-page-title">
+            <div class="mb-8 max-w-2xl sm:mb-10">
+                <p class="mb-3 text-sm font-semibold text-[#244C3D]">Hasil klasifikasi</p>
+                <h1 id="result-page-title" class="text-3xl font-bold text-[#202A25] sm:text-4xl">Periksa prediksi sebelum menentukan penanganan.</h1>
+                <p class="mt-4 leading-relaxed text-[#526159]">Hasil berikut adalah estimasi sistem berdasarkan gambar yang dipilih, bukan jaminan identifikasi yang selalu benar.</p>
             </div>
 
-            <div id="result-container" class="p-0">
+            <div id="result-container" class="p-0" role="status" aria-live="polite">
                 </div>
 
-            <div class="mt-10 text-center">
-                <a href="./klasifikasi.html" class="inline-block bg-[#3F7D58] text-white px-8 py-3 rounded-lg text-base font-semibold hover:bg-[#326748] transition-colors shadow-md hover:shadow-lg">
-                    <i class="fas fa-redo mr-2"></i> Analisis Lagi
+            <div class="mt-8 flex justify-start">
+                <a href="./klasifikasi.html" class="inline-flex min-h-12 items-center rounded-lg bg-[#244C3D] px-6 py-3 text-base font-semibold text-white hover:bg-[#18392D]">
+                    <i class="fas fa-redo mr-2" aria-hidden="true"></i> Klasifikasikan gambar lain
                 </a>
             </div>
         </section>
     </main>
 
-    <footer class="bg-[#EFEFEF] text-gray-600 py-6 text-center mt-16 sm:mt-20">
+    <footer class="mt-16 border-t border-[#315C4B] bg-[#244C3D] py-8 text-center text-white/90 sm:mt-20">
         <p class="text-xs sm:text-sm">&copy; 2025 TrashGu | CC25-CF125. All rights reserved.</p>
     </footer>
 
@@ -106,20 +105,22 @@ main {
                 const data = JSON.parse(resultDataString);
                 displayResults(data, imagePreviewUrl);
             } catch (e) {
-                displayError();
+                displayError('Data hasil tidak dapat dibaca. Silakan lakukan klasifikasi ulang.');
             }
         } else {
-            displayError();
+            displayError('Tidak ada data hasil klasifikasi pada sesi ini.');
         }
 
         sessionStorage.removeItem('classificationResult');
         sessionStorage.removeItem('imagePreviewUrl');
 
-        function displayError() {
+        function displayError(message) {
             resultContainer.innerHTML = `
-                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg text-center">
-                    <h2 class="text-xl font-semibold text-red-600 mb-4">Gagal Memuat Hasil</h2>
-                    <p class="text-gray-600">Tidak ada data hasil klasifikasi yang ditemukan.</p>
+                <div class="trashgu-panel rounded-xl p-6 sm:p-8" role="alert">
+                    <p class="text-sm font-semibold text-[#8B2923]">Hasil belum tersedia</p>
+                    <h2 class="mt-2 text-2xl font-bold text-[#202A25]">Kami tidak dapat menampilkan hasil klasifikasi.</h2>
+                    <p class="mt-3 text-[#526159]">${message}</p>
+                    <a href="./klasifikasi.html" class="mt-6 inline-flex min-h-11 items-center font-semibold text-[#244C3D] underline underline-offset-4">Kembali ke klasifikasi</a>
                 </div>`;
         }
 
@@ -187,10 +188,19 @@ main {
             userProfileButton.addEventListener('click', (event) => {
                 event.stopPropagation();
                 userProfileDropdown.classList.toggle('hidden');
+                userProfileButton.setAttribute('aria-expanded', String(!userProfileDropdown.classList.contains('hidden')));
             });
             document.addEventListener('click', (event) => {
                 if (userProfileButton && !userProfileButton.contains(event.target) && userProfileDropdown && !userProfileDropdown.contains(event.target)) {
                     userProfileDropdown.classList.add('hidden');
+                    userProfileButton.setAttribute('aria-expanded', 'false');
+                }
+            });
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && !userProfileDropdown.classList.contains('hidden')) {
+                    userProfileDropdown.classList.add('hidden');
+                    userProfileButton.setAttribute('aria-expanded', 'false');
+                    userProfileButton.focus();
                 }
             });
         }
@@ -216,7 +226,11 @@ main {
         }
 
         function displayResults(data, imageUrl) {
-            const mainCategory = data.kategori ? data.kategori.toUpperCase() : 'RESIDU';
+            if (!data || !data.kategori || typeof data.akurasi !== 'number') {
+                displayError('Data hasil tidak lengkap. Silakan lakukan klasifikasi ulang.');
+                return;
+            }
+            const mainCategory = data.kategori.toUpperCase();
             const specificCategory = data.kategori_spesifik ? data.kategori_spesifik.replace(/\b\w/g, l => l.toUpperCase()) : 'Tidak Diketahui';
             const accuracy = data.akurasi ? (data.akurasi * 100) : 0;
             
@@ -236,34 +250,39 @@ main {
             else if (mainCategory === 'ANORGANIK') badgeClass = 'category-badge-anorganik';
 
             const resultHTML = `
-                <div class="gradient-card-green text-white p-6 sm:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row gap-8">
-                    <div class="w-full md:w-5/12">
-                        <div class="bg-white/20 rounded-lg overflow-hidden aspect-square flex items-center justify-center">
-                            <img src="${imageUrl}" alt="Gambar Sampah" class="w-full h-full object-cover">
+                <article class="trashgu-panel overflow-hidden rounded-2xl">
+                  <div class="grid md:grid-cols-[0.85fr_1.15fr]">
+                    <div class="min-h-72 bg-[#EEF1EC] p-4 sm:p-6">
+                        <div class="flex h-full min-h-64 items-center justify-center overflow-hidden rounded-xl bg-white">
+                            <img src="${imageUrl}" alt="Gambar yang digunakan untuk klasifikasi" class="h-full max-h-[32rem] w-full object-contain">
                         </div>
                     </div>
-                    <div class="w-full md:w-7/12">
-                        <span class="inline-block px-3 py-1 text-sm font-semibold rounded-full ${badgeClass}">${mainCategory}</span>
-                        <h2 class="text-4xl font-bold mt-2 mb-6">${specificCategory}</h2>
-
-                        <div class="mb-6">
-                            <p class="text-sm font-medium text-slate-200 mb-2">Tingkat Akurasi</p>
-                            <div class="flex items-center gap-4">
-                                <div class="w-full progress-bar-container h-4 bg-white/30">
-                                    <div class="progress-bar progress-bar-green" style="width: ${accuracy.toFixed(0)}%;"></div>
-                                </div>
-                                <span class="text-lg font-semibold">${accuracy.toFixed(0)}%</span>
-                            </div>
+                    <div class="p-6 sm:p-8 lg:p-10">
+                        <p class="text-sm font-semibold text-[#526159]">Kategori yang diprediksi</p>
+                        <div class="mt-3 flex flex-wrap items-center gap-3">
+                          <h2 class="text-4xl font-bold leading-tight text-[#202A25] sm:text-5xl">${mainCategory}</h2>
+                          <span class="inline-block rounded-full px-3 py-1 text-sm font-semibold ${badgeClass}">${specificCategory}</span>
                         </div>
 
-                        <div>
-                            <p class="text-sm font-medium text-slate-200 mb-2">Saran Penanganan</p>
-                            <ul class="text-sm text-slate-100 space-y-2">
+                        <div class="mt-8 border-y border-[#D7DED5] py-6">
+                            <div class="flex items-end justify-between gap-4">
+                              <div><p class="text-sm font-semibold text-[#202A25]">Estimasi confidence</p><p class="mt-1 text-sm leading-relaxed text-[#526159]">Nilai ini menunjukkan keyakinan prediksi model, bukan jaminan akurasi.</p></div>
+                              <span class="text-3xl font-bold text-[#244C3D]">${accuracy.toFixed(0)}%</span>
+                            </div>
+                            <div class="mt-4 h-3 w-full progress-bar-container" role="progressbar" aria-label="Estimasi confidence" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${accuracy.toFixed(0)}">
+                                <div class="progress-bar progress-bar-green" style="width: ${accuracy.toFixed(0)}%;"></div>
+                                </div>
+                        </div>
+
+                        <div class="trashgu-muted-panel mt-6 rounded-xl p-5">
+                            <h3 class="text-lg font-bold text-[#202A25]">Saran penanganan</h3>
+                            <ul class="mt-3 space-y-2 text-sm leading-relaxed text-[#405047]">
                                 ${suggestionsHTML}
                             </ul>
                         </div>
                     </div>
-                </div>
+                  </div>
+                </article>
             `;
             resultContainer.innerHTML = resultHTML;
         }

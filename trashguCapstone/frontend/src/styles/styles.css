@@ -17,6 +17,54 @@ body {
   image-rendering: -webkit-optimize-contrast; /* Khusus Chrome/WebKit */
 }
 
+.login-editorial-panel {
+  background-color: #244c3d;
+  background-image:
+    linear-gradient(rgba(18, 48, 37, 0.84), rgba(18, 48, 37, 0.92)),
+    url('../assets/images/background-login.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.trashgu-ui {
+  color: #202a25;
+  background: #f6f5ef;
+}
+
+.trashgu-ui :where(button, a[href], label[for], select):not(:disabled) {
+  cursor: pointer;
+}
+
+.trashgu-ui :where(button, a[href], input, select, textarea):focus-visible {
+  outline: 2px solid #244c3d;
+  outline-offset: 3px;
+}
+
+.trashgu-panel {
+  border: 1px solid #d7ded5;
+  background: #ffffff;
+}
+
+.trashgu-muted-panel {
+  border: 1px solid #c8d7c6;
+  background: #dde8db;
+}
+
+.classification-upload-surface {
+  background-image: linear-gradient(135deg, rgba(221, 232, 219, 0.65), rgba(246, 245, 239, 0.45));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trashgu-ui *,
+  .trashgu-ui *::before,
+  .trashgu-ui *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 .gradient-card-jelas {
   background-image: linear-gradient(to bottom, #3F7D58, #2c553c); /* Dari custom-green ke variasi yang sedikit lebih gelap lagi */
 }

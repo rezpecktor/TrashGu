@@ -4,60 +4,54 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TrashGu - Daftar Akun</title>
-    <style>
-      .input-icon-container {
-        position: relative;
-      }
-      .input-icon-container .toggle-password {
-        position: absolute;
-        top: 50%;
-        right: 0.75rem; /* 12px */
-        transform: translateY(-50%);
-        cursor: pointer;
-        color: #9ca3af; /* gray-400 */
-      }
-      .input-icon-container .toggle-password:hover {
-        color: #6b7280; /* gray-500 */
-      }
-    </style>
   </head>
-  <body class="font-sans bg-slate-100">
-    <div
-      class="min-h-screen flex flex-col items-center justify-center px-4 py-12 sm:px-6 lg:px-8 login-background"
-    >
-      <div class="relative bg-white p-8 sm:p-10 md:p-12 rounded-xl shadow-2xl w-full max-w-md z-10">
-        <div class="text-center mb-8">
-          <a href="./index.html">
-            <img src="./assets/images/logo.png" alt="TrashGu Logo" class="h-12 sm:h-14 mx-auto mb-4" />
-          </a>
+  <body class="trashgu-ui bg-[#F6F5EF]">
+    <main class="min-h-screen lg:grid lg:grid-cols-[0.85fr_1.15fr]">
+      <section class="login-editorial-panel relative flex min-h-56 flex-col justify-between px-5 py-6 text-white sm:min-h-64 sm:px-10 sm:py-8 lg:min-h-screen lg:px-12 lg:py-10 xl:px-16">
+        <a href="./index.html" class="relative z-10 inline-flex min-h-11 w-fit items-center rounded-md bg-white px-3 py-2" aria-label="Kembali ke beranda TrashGu">
+          <img src="./assets/images/logo.png" alt="TrashGu" class="h-9 w-auto sm:h-10" />
+        </a>
+        <div class="relative z-10 mt-10 max-w-lg lg:mt-auto lg:pb-6">
+          <p class="mb-3 text-sm font-semibold tracking-wide text-[#DDE8DB]">Mulai kebiasaan yang lebih baik</p>
+          <p class="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">Satu akun untuk mengenali dan memilah.</p>
+          <p class="mt-4 max-w-md text-base leading-relaxed text-white/90">Simpan riwayat klasifikasi dan pelajari cara menangani sampah dengan lebih terarah.</p>
+        </div>
+      </section>
+
+      <section class="flex items-center bg-[#F6F5EF] px-5 py-10 sm:px-10 sm:py-14 lg:px-12 xl:px-20">
+      <div class="mx-auto w-full max-w-lg">
+        <div class="mb-8">
+          <p class="mb-2 text-sm font-semibold text-[#244C3D]">Akun baru</p>
+          <h1 class="text-3xl font-bold tracking-tight text-[#202A25] sm:text-4xl">Daftar ke TrashGu</h1>
+          <p class="mt-3 leading-relaxed text-[#526159]">Isi data berikut untuk membuat akun. Semua field wajib diisi.</p>
         </div>
 
-        <form id="registerForm" class="space-y-5">
+        <form id="registerForm" class="space-y-5" novalidate>
           <div>
-            <label for="reg-username" class="block text-sm font-medium text-gray-700 mb-1">Nama Pengguna</label>
+            <label for="reg-username" class="mb-2 block text-sm font-semibold text-[#202A25]">Nama pengguna</label>
             <div class="relative mt-1">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <svg class="h-5 w-5 text-[#526159]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                 </svg>
               </div>
-              <input id="reg-username" name="username" type="text" autocomplete="username" required class="appearance-none block w-full px-3 py-2.5 pl-10 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#3F7D58] focus:border-[#3F7D58] sm:text-sm" placeholder="Buat nama pengguna Anda"/>
+              <input id="reg-username" name="username" type="text" autocomplete="username" required aria-describedby="username-error" aria-invalid="false" class="block min-h-12 w-full rounded-lg border border-[#AAB7AC] bg-white px-4 py-3 pl-10 text-base text-[#202A25] shadow-sm placeholder:text-[#6B776F] focus:border-[#244C3D] focus:outline-none focus:ring-2 focus:ring-[#244C3D]" placeholder="Buat nama pengguna Anda"/>
             </div>
-            <p id="username-error" class="mt-1 text-xs text-red-500 hidden"></p>
+            <p id="username-error" class="mt-2 hidden text-sm font-medium text-[#A12626]" aria-live="assertive"></p>
           </div>
 
           <div>
-            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <label for="email" class="mb-2 block text-sm font-semibold text-[#202A25]">Email</label>
             <div class="relative mt-1">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <svg class="h-5 w-5 text-[#526159]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path d="M2.003 5.884L10 11.882l7.997-5.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                   <path d="M18 8.118l-8 6-8-6V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                 </svg>
               </div>
-              <input id="email" name="email" type="email" autocomplete="email" required class="appearance-none block w-full px-3 py-2.5 pl-10 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#3F7D58] focus:border-[#3F7D58] sm:text-sm" placeholder="Masukkan alamat email Anda"/>
+              <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error" aria-invalid="false" class="block min-h-12 w-full rounded-lg border border-[#AAB7AC] bg-white px-4 py-3 pl-10 text-base text-[#202A25] shadow-sm placeholder:text-[#6B776F] focus:border-[#244C3D] focus:outline-none focus:ring-2 focus:ring-[#244C3D]" placeholder="Masukkan alamat email Anda"/>
             </div>
-            <p id="email-error" class="mt-1 text-xs text-red-500 hidden"></p>
+            <p id="email-error" class="mt-2 hidden text-sm font-medium text-[#A12626]" aria-live="assertive"></p>
           </div>
           
           <!-- 
@@ -76,67 +70,67 @@
           -->
 
           <div>
-            <label for="reg-password" class="block text-sm font-medium text-gray-700 mb-1">Kata Sandi</label>
+            <label for="reg-password" class="mb-2 block text-sm font-semibold text-[#202A25]">Kata sandi</label>
             <div class="relative mt-1 input-icon-container">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <svg class="h-5 w-5 text-[#526159]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
                       </svg>
                 </div>
-              <input id="reg-password" name="password" type="password" autocomplete="new-password" required minlength="8" class="appearance-none block w-full px-3 py-2.5 pl-10 pr-10 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#3F7D58] focus:border-[#3F7D58] sm:text-sm" placeholder="Minimal 8 karakter"/>
-              <span class="toggle-password" id="toggle-password-reg">
-                <svg class="h-5 w-5" id="eye-icon-reg-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <input id="reg-password" name="password" type="password" autocomplete="new-password" required minlength="8" aria-describedby="password-error" aria-invalid="false" class="block min-h-12 w-full rounded-lg border border-[#AAB7AC] bg-white px-4 py-3 pl-10 pr-14 text-base text-[#202A25] shadow-sm placeholder:text-[#6B776F] focus:border-[#244C3D] focus:outline-none focus:ring-2 focus:ring-[#244C3D]" placeholder="Minimal 8 karakter"/>
+              <button type="button" class="toggle-password absolute inset-y-0 right-1 my-auto inline-flex h-11 w-11 items-center justify-center rounded-md text-[#526159] hover:bg-[#DDE8DB]" id="toggle-password-reg" aria-label="Tampilkan kata sandi" aria-controls="reg-password" aria-pressed="false">
+                <svg class="h-5 w-5" id="eye-icon-reg-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                   <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
                 </svg>
-                <svg class="h-5 w-5 hidden" id="eye-icon-reg-closed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <svg class="h-5 w-5 hidden" id="eye-icon-reg-closed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path fill-rule="evenodd" d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z" clip-rule="evenodd" />
                   <path d="M12.454 16.697L9.75 13.992a4 4 0 01-3.742-3.742L2.293 6.546A10.005 10.005 0 01.458 10c1.274 4.057 5.064 7 9.542 7 .847 0 1.669-.105 2.454-.303z" />
                 </svg>
-              </span>
+              </button>
             </div>
-            <p id="password-error" class="mt-1 text-xs text-red-500 hidden"></p>
+            <p id="password-error" class="mt-2 hidden text-sm font-medium text-[#A12626]" aria-live="assertive"></p>
           </div>
           <div>
-            <label for="confirm-password" class="block text-sm font-medium text-gray-700 mb-1">Konfirmasi Kata Sandi</label>
+            <label for="confirm-password" class="mb-2 block text-sm font-semibold text-[#202A25]">Konfirmasi kata sandi</label>
             <div class="relative mt-1 input-icon-container">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <svg class="h-5 w-5 text-[#526159]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
                       </svg>
                 </div>
-              <input id="confirm-password" name="confirm-password" type="password" autocomplete="new-password" required minlength="8" class="appearance-none block w-full px-3 py-2.5 pl-10 pr-10 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#3F7D58] focus:border-[#3F7D58] sm:text-sm" placeholder="Ulangi kata sandi Anda"/>
-              <span class="toggle-password" id="toggle-confirm-password-reg">
-                <svg class="h-5 w-5" id="eye-icon-confirm-reg-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <input id="confirm-password" name="confirm-password" type="password" autocomplete="new-password" required minlength="8" aria-describedby="confirm-password-error" aria-invalid="false" class="block min-h-12 w-full rounded-lg border border-[#AAB7AC] bg-white px-4 py-3 pl-10 pr-14 text-base text-[#202A25] shadow-sm placeholder:text-[#6B776F] focus:border-[#244C3D] focus:outline-none focus:ring-2 focus:ring-[#244C3D]" placeholder="Ulangi kata sandi Anda"/>
+              <button type="button" class="toggle-password absolute inset-y-0 right-1 my-auto inline-flex h-11 w-11 items-center justify-center rounded-md text-[#526159] hover:bg-[#DDE8DB]" id="toggle-confirm-password-reg" aria-label="Tampilkan konfirmasi kata sandi" aria-controls="confirm-password" aria-pressed="false">
+                <svg class="h-5 w-5" id="eye-icon-confirm-reg-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                   <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
                 </svg>
-                <svg class="h-5 w-5 hidden" id="eye-icon-confirm-reg-closed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <svg class="h-5 w-5 hidden" id="eye-icon-confirm-reg-closed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path fill-rule="evenodd" d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z" clip-rule="evenodd" />
                   <path d="M12.454 16.697L9.75 13.992a4 4 0 01-3.742-3.742L2.293 6.546A10.005 10.005 0 01.458 10c1.274 4.057 5.064 7 9.542 7 .847 0 1.669-.105 2.454-.303z" />
                 </svg>
-              </span>
+              </button>
             </div>
-            <p id="confirm-password-error" class="mt-1 text-xs text-red-500 hidden"></p>
+            <p id="confirm-password-error" class="mt-2 hidden text-sm font-medium text-[#A12626]" aria-live="assertive"></p>
           </div>
 
           <div class="pt-2">
-            <button id="registerSubmitButton" type="submit" class="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-[#3F7D58] hover:bg-[#326748] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-75">
-              <span id="registerButtonText">Daftar</span>
-              <svg id="registerSpinner" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <button id="registerSubmitButton" type="submit" class="flex min-h-12 w-full items-center justify-center rounded-lg bg-[#244C3D] px-5 py-3 text-base font-semibold text-white shadow-sm hover:bg-[#18392D] disabled:cursor-not-allowed disabled:opacity-60">
+              <svg id="registerSpinner" class="mr-3 hidden h-5 w-5 animate-spin text-white motion-reduce:animate-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
+              </svg><span id="registerButtonText">Daftar</span>
             </button>
           </div>
         </form>
-        <div id="register-message" class="mt-4 text-sm text-center"></div>
-        <p class="mt-8 text-center text-xs text-gray-500">
+        <div id="register-message" class="mt-4 min-h-6 text-sm font-medium" role="status" aria-live="polite"></div>
+        <p class="mt-8 border-t border-[#D7DED5] pt-6 text-sm text-[#526159]">
           Sudah punya akun?
-          <a href="./login.html" class="font-medium text-[#3F7D58] hover:text-[#326748]"> Masuk </a>
+          <a href="./login.html" class="inline-flex min-h-11 items-center font-semibold text-[#244C3D] underline underline-offset-4 hover:text-[#18392D]">Masuk</a>
         </p>
       </div>
-    </div>
+      </section>
+    </main>
     <script>
       const registerForm = document.getElementById('registerForm');
       const registerMessage = document.getElementById('register-message');
@@ -155,6 +149,8 @@
       const registerSubmitButton = document.getElementById('registerSubmitButton');
       const registerButtonText = document.getElementById('registerButtonText');
       const registerSpinner = document.getElementById('registerSpinner');
+      const passwordToggle = document.getElementById('toggle-password-reg');
+      const confirmPasswordToggle = document.getElementById('toggle-confirm-password-reg');
 
       let passwordToggleTimeout; // Variabel untuk menyimpan timeout
 
@@ -167,20 +163,30 @@
         // Hapus timeout sebelumnya jika ada
         clearTimeout(passwordToggleTimeout);
 
+        const toggle = inputId === 'reg-password' ? passwordToggle : confirmPasswordToggle;
+        const hiddenLabel = inputId === 'reg-password' ? 'Sembunyikan kata sandi' : 'Sembunyikan konfirmasi kata sandi';
+        const visibleLabel = inputId === 'reg-password' ? 'Tampilkan kata sandi' : 'Tampilkan konfirmasi kata sandi';
+
         if (input.type === "password") {
           input.type = "text";
           openIcon.classList.add('hidden');
           closedIcon.classList.remove('hidden');
+          toggle.setAttribute('aria-pressed', 'true');
+          toggle.setAttribute('aria-label', hiddenLabel);
           // Set timeout untuk menyembunyikan kembali password
           passwordToggleTimeout = setTimeout(() => {
             input.type = "password";
             openIcon.classList.remove('hidden');
             closedIcon.classList.add('hidden');
+            toggle.setAttribute('aria-pressed', 'false');
+            toggle.setAttribute('aria-label', visibleLabel);
           }, timeoutDuration);
         } else {
           input.type = "password";
           openIcon.classList.remove('hidden');
           closedIcon.classList.add('hidden');
+          toggle.setAttribute('aria-pressed', 'false');
+          toggle.setAttribute('aria-label', visibleLabel);
         }
       }
 
@@ -203,12 +209,13 @@
       registerForm.addEventListener('submit', async function(event) {
         event.preventDefault();
         registerMessage.textContent = '';
-        registerMessage.className = 'mt-4 text-sm text-center';
+        registerMessage.className = 'mt-4 min-h-6 text-sm font-medium';
         // fullnameError.textContent = ''; fullnameError.classList.add('hidden'); // Dihilangkan
         usernameError.textContent = ''; usernameError.classList.add('hidden');
         emailError.textContent = ''; emailError.classList.add('hidden');
         passwordError.textContent = ''; passwordError.classList.add('hidden');
         confirmPasswordError.textContent = ''; confirmPasswordError.classList.add('hidden');
+        [usernameInput, emailInput, passwordInput, confirmPasswordInput].forEach(input => input.setAttribute('aria-invalid', 'false'));
 
         // const fullName = fullnameInput.value; // Dihilangkan
         const username = usernameInput.value;
@@ -220,29 +227,35 @@
         if (!username.trim()) {
             usernameError.textContent = 'Nama pengguna tidak boleh kosong.';
             usernameError.classList.remove('hidden');
+            usernameInput.setAttribute('aria-invalid', 'true');
             isValid = false;
         }
         if (!email.trim()) {
             emailError.textContent = 'Email tidak boleh kosong.';
             emailError.classList.remove('hidden');
+            emailInput.setAttribute('aria-invalid', 'true');
             isValid = false;
         } else if (!isValidEmail(email)) {
             emailError.textContent = 'Format email tidak valid.';
             emailError.classList.remove('hidden');
+            emailInput.setAttribute('aria-invalid', 'true');
             isValid = false;
         }
         if (password.length < 8) {
           passwordError.textContent = 'Kata sandi minimal 8 karakter.';
           passwordError.classList.remove('hidden');
+          passwordInput.setAttribute('aria-invalid', 'true');
           isValid = false;
         }
         if (password !== confirmPassword) {
           confirmPasswordError.textContent = 'Konfirmasi kata sandi tidak cocok!';
           confirmPasswordError.classList.remove('hidden');
+          confirmPasswordInput.setAttribute('aria-invalid', 'true');
           isValid = false;
         }
 
         if (!isValid) {
+          registerForm.querySelector('[aria-invalid="true"]')?.focus();
           return;
         }
 
@@ -251,7 +264,7 @@
         registerSpinner.classList.remove('hidden');
 
         try {
-          const response = await fetch('https://pebria.pythonanywhere.com/api/register', {
+          const response = await fetch('http://127.0.0.1:5000/api/register', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -268,19 +281,19 @@
 
           if (response.ok) { 
             registerMessage.textContent = result.message || 'Registrasi berhasil! Mengarahkan ke halaman login...';
-            registerMessage.classList.add('text-green-600');
+            registerMessage.classList.add('text-[#24613F]');
             registerForm.reset(); 
             setTimeout(() => { 
               window.location.href = './login.html'; 
             }, 2000);
           } else {
             registerMessage.textContent = result.error || 'Registrasi gagal. Silakan coba lagi.';
-            registerMessage.classList.add('text-red-500');
+            registerMessage.classList.add('text-[#A12626]');
           }
         } catch (error) {
           console.error('Error:', error);
           registerMessage.textContent = 'Terjadi kesalahan koneksi. Silakan coba lagi nanti.';
-          registerMessage.classList.add('text-red-500');
+          registerMessage.classList.add('text-[#A12626]');
         } finally {
             registerSubmitButton.disabled = false;
             registerButtonText.textContent = 'Daftar';
