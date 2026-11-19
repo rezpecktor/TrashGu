@@ -1,0 +1,11 @@
+# Python local environment and cache
+/.venv/
+__pycache__/
+*.py[cod]
+
+# Node dependencies and cache
+/node_modules/
+/trashguCapstone/frontend/node_modules/
+/trashguCapstone/frontend/..npm-cache-recovery/
+# Backend runtime uploads
+/trashguCapstone/backend/instance/uploads/
